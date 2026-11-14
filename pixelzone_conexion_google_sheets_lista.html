@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PixelZone | Periféricos de Alto Rendimiento y Soporte Especializado</title>
+  <!-- Google Fonts: Space Grotesk para títulos tecnológicos e Inter para máxima legibilidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Space Grotesk', 'sans-serif'],
+          },
+          colors: {
+            void: '#0a0c12',
+            surface: '#121622',
+            elevated: '#1a2033',
+            cyanAccent: '#00f0ff',
+            violetAccent: '#7c3aed',
+          },
+          boxShadow: {
+            neon: '0 0 24px -4px rgba(0, 240, 255, 0.35)',
+            neonStrong: '0 0 32px -2px rgba(0, 240, 255, 0.55)',
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-void text-slate-200 font-sans antialiased selection:bg-cyanAccent selection:text-void overflow-x-hidden">
+
+  <!-- ===================================================================== -->
+  <!-- ENCABEZADO STICKY CON GLASSMORPHISM Y MENÚ RESPONSIVE                 -->
+  <!-- ===================================================================== -->
+  <header class="sticky top-0 z-40 w-full bg-void/80 backdrop-blur-md border-b border-slate-800/80 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-18 py-4">
+        
+        <!-- Logo PixelZone -->
+        <a href="#inicio" class="flex items-center gap-3 group focus:outline-none">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyanAccent/20 to-violetAccent/20 border border-cyanAccent/40 flex items-center justify-center group-hover:shadow-neon transition-all duration-300">
+            <!-- Icono geométrico SVG minimalista -->
+            <svg class="w-6 h-6 text-cyanAccent" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2" stroke-linejoin="round" />
+              <rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor" fill-opacity="0.25" />
+              <line x1="12" y1="2" x2="12" y2="9" />
+              <line x1="21" y1="17" x2="15" y2="14" />
+              <line x1="3" y1="17" x2="9" y2="14" />
+            </svg>
+          </div>
+          <span class="font-display font-bold text-2xl tracking-tight text-white">
+            Pixel<span class="text-cyanAccent">Zone</span>
+          </span>
+        </a>
+
+        <!-- Navegación Desktop -->
+        <nav class="hidden md:flex items-center gap-8" aria-label="Navegación principal">
+          <a href="#inicio" class="text-sm font-medium text-slate-300 hover:text-cyanAccent transition-colors">Inicio</a>
+          <a href="#catalogo" class="text-sm font-medium text-slate-300 hover:text-cyanAccent transition-colors">Catálogo</a>
+          <a href="#nosotros" class="text-sm font-medium text-slate-300 hover:text-cyanAccent transition-colors">Sobre PixelZone</a>
+          <a href="#soporte" class="text-sm font-medium px-4 py-2 rounded-xl bg-elevated border border-slate-700 hover:border-cyanAccent/60 text-white hover:text-cyanAccent transition-all">
+            Soporte Técnico
+          </a>
+        </nav>
+
+        <!-- Botón Menú Hamburguesa Móvil -->
+        <button id="mobile-menu-btn" type="button" aria-label="Abrir menú de navegación" aria-expanded="false"
+          class="md:hidden p-2.5 rounded-xl bg-surface border border-slate-800 text-slate-200 hover:text-cyanAccent hover:border-cyanAccent/50 transition-colors">
+          <svg id="icon-open" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="w-6 h-6 hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menú Desplegable Móvil -->
+    <div id="mobile-menu" class="hidden md:hidden bg-surface/95 backdrop-blur-xl border-b border-slate-800 px-4 pt-2 pb-6 space-y-2">
+      <a href="#inicio" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-elevated hover:text-cyanAccent transition-colors">Inicio</a>
+      <a href="#catalogo" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-elevated hover:text-cyanAccent transition-colors">Catálogo</a>
+      <a href="#nosotros" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium text-slate-200 hover:bg-elevated hover:text-cyanAccent transition-colors">Sobre PixelZone</a>
+      <a href="#soporte" class="mobile-link block px-4 py-3 rounded-xl text-base font-medium bg-cyanAccent/10 border border-cyanAccent/30 text-cyanAccent">Soporte Técnico</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===================================================================== -->
+    <!-- PORTADA PRINCIPAL (HERO SECTION)                                      -->
+    <!-- ===================================================================== -->
+    <section id="inicio" class="relative pt-14 pb-20 sm:pt-20 sm:pb-28 lg:pt-24 lg:pb-32 overflow-hidden">
+      <!-- Resplandores ambientales de fondo -->
+      <div class="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[36rem] sm:w-[52rem] h-[24rem] bg-cyanAccent/10 blur-[130px] rounded-full"></div>
+      <div class="pointer-events-none absolute top-40 right-0 w-[22rem] h-[22rem] bg-violetAccent/15 blur-[120px] rounded-full"></div>
+
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Columna de Texto -->
+          <div class="lg:col-span-7 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-surface border border-cyanAccent/30 text-cyanAccent text-xs sm:text-sm font-medium mb-6">
+              <span class="w-2 h-2 rounded-full bg-cyanAccent animate-pulse"></span>
+              Hardware de Precisión • Envíos a toda Colombia
+            </div>
+
+            <h1 class="font-display text-4xl sm:text-5xl lg:text-6xl font-bold text-white tracking-tight leading-[1.12] mb-6">
+              Domina cada partida y potencia tu <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyanAccent to-violet-400">setup profesional</span>
+            </h1>
+
+            <p class="text-base sm:text-lg text-slate-300 max-w-2xl mx-auto lg:mx-0 leading-relaxed mb-8">
+              En <strong class="text-white font-semibold">PixelZone</strong> seleccionamos periféricos de ingeniería avanzada para gamers competitivos, creadores y desarrolladores. Respuesta ultrarrápida, ergonomía certificada y respaldo técnico local.
+            </p>
+
+            <!-- Botones de Acción -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 mb-12">
+              <a href="#catalogo"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-7 py-3.5 rounded-xl bg-cyanAccent text-void font-semibold text-base hover:bg-cyan-300 shadow-neon hover:shadow-neonStrong transition-all duration-300">
+                <span>Ver productos</span>
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </a>
+              <a href="#soporte"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-surface hover:bg-elevated text-white font-medium text-base border border-slate-700 hover:border-cyanAccent/50 transition-all duration-300">
+                <svg class="w-5 h-5 text-cyanAccent" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+                <span>Solicitar soporte técnico</span>
+              </a>
+            </div>
+
+            <!-- Estadísticas sutiles -->
+            <div class="grid grid-cols-3 gap-4 pt-6 border-t border-slate-800/90 max-w-lg mx-auto lg:mx-0">
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-white">+4.800</p>
+                <p class="text-xs sm:text-sm text-slate-400">Setups equipados</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-cyanAccent">24-48h</p>
+                <p class="text-xs sm:text-sm text-slate-400">Entrega nacional</p>
+              </div>
+              <div>
+                <p class="font-display text-2xl sm:text-3xl font-bold text-white">12 Meses</p>
+                <p class="text-xs sm:text-sm text-slate-400">Garantía directa</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Visual Tecnológica (Composición SVG de Setup) -->
+          <div class="lg:col-span-5">
+            <div class="relative rounded-2xl bg-gradient-to-b from-elevated to-surface p-6 sm:p-8 border border-slate-800 shadow-2xl">
+              <div class="flex items-center justify-between mb-5">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-amber-400/80"></span>
+                  <span class="w-3 h-3 rounded-full bg-emerald-400/80"></span>
+                </div>
+                <span class="text-xs font-mono text-cyanAccent bg-cyanAccent/10 px-2.5 py-1 rounded-md border border-cyanAccent/20">
+                  PRO-GEAR SERIES 2026
+                </span>
+              </div>
+
+              <!-- Ilustración SVG Estilizada de Ecosistema Periféricos -->
+              <svg viewBox="0 0 400 280" class="w-full h-auto rounded-xl bg-void/70 border border-slate-800/80 p-4" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ilustración de periféricos PixelZone">
+                <defs>
+                  <linearGradient id="screenGlow" x1="0" y1="0" x2="400" y2="280" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#00f0ff" stop-opacity="0.28" />
+                    <stop offset="100%" stop-color="#7c3aed" stop-opacity="0.18" />
+                  </linearGradient>
+                </defs>
+                <!-- Cuadrícula sutil -->
+                <path d="M0 40H400M0 80H400M0 120H400M0 160H400M0 200H400M0 240H400" stroke="#1e293b" stroke-width="0.6" />
+                <path d="M50 0V280M100 0V280M150 0V280M200 0V280M250 0V280M300 0V280M350 0V280" stroke="#1e293b" stroke-width="0.6" />
+                
+                <!-- Monitor central -->
+                <rect x="75" y="24" width="250" height="132" rx="10" fill="#121622" stroke="#00f0ff" stroke-width="2" />
+                <rect x="85" y="34" width="230" height="106" rx="6" fill="url(#screenGlow)" />
+                <!-- Ondas de rendimiento en pantalla -->
+                <polyline points="105,112 145,82 180,98 225,58 265,74 295,48" stroke="#00f0ff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+                <circle cx="295" cy="48" r="5" fill="#00f0ff" />
+                <!-- Base monitor -->
+                <path d="M182 156H218L226 176H174L182 156Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+                <rect x="150" y="176" width="100" height="6" rx="3" fill="#00f0ff" fill-opacity="0.7" />
+
+                <!-- Teclado mecánico -->
+                <rect x="65" y="198" width="185" height="54" rx="8" fill="#1a2033" stroke="#38bdf8" stroke-width="1.5" />
+                <g fill="#0f172a" stroke="#00f0ff" stroke-opacity="0.45" stroke-width="1">
+                  <rect x="76" y="208" width="16" height="10" rx="2" />
+                  <rect x="97" y="208" width="16" height="10" rx="2" />
+                  <rect x="118" y="208" width="16" height="10" rx="2" />
+                  <rect x="139" y="208" width="16" height="10" rx="2" />
+                  <rect x="160" y="208" width="16" height="10" rx="2" />
+                  <rect x="181" y="208" width="16" height="10" rx="2" />
+                  <rect x="202" y="208" width="36" height="10" rx="2" />
+                  <rect x="76" y="224" width="26" height="12" rx="2" />
+                  <rect x="107" y="224" width="84" height="12" rx="2" fill="#00f0ff" fill-opacity="0.18" />
+                  <rect x="196" y="224" width="42" height="12" rx="2" />
+                </g>
+
+                <!-- Mouse gamer -->
+                <rect x="276" y="196" width="48" height="62" rx="22" fill="#1a2033" stroke="#00f0ff" stroke-width="1.8" />
+                <line x1="300" y1="196" x2="300" y2="220" stroke="#00f0ff" stroke-width="1.5" />
+                <rect x="297" y="204" width="6" height="12" rx="3" fill="#00f0ff" />
+              </svg>
+
+              <div class="mt-5 grid grid-cols-2 gap-3 text-xs">
+                <div class="p-3 rounded-xl bg-void/60 border border-slate-800 flex items-center justify-between">
+                  <span class="text-slate-400">Latencia Polling</span>
+                  <span class="font-mono font-semibold text-cyanAccent">0.125 ms</span>
+                </div>
+                <div class="p-3 rounded-xl bg-void/60 border border-slate-800 flex items-center justify-between">
+                  <span class="text-slate-400">Switches Ópticos</span>
+                  <span class="font-mono font-semibold text-emerald-400">Certificados</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- CATÁLOGO DE PRODUCTOS (6 PERIFÉRICOS EQUILIBRADOS EN GRID)            -->
+    <!-- ===================================================================== -->
+    <section id="catalogo" class="py-20 bg-surface/50 border-y border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Encabezado de Sección -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+          <div>
+            <span class="text-cyanAccent font-mono text-xs sm:text-sm uppercase tracking-widest">Equipamiento Seleccionado</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Catálogo de Periféricos</h2>
+            <p class="text-slate-400 mt-2 max-w-2xl text-sm sm:text-base">
+              Hardware calibrado para máximo rendimiento. Haz clic en <span class="text-slate-200 font-medium">Consultar</span> para ver especificaciones rápidas o solicitar asesoría personalizada.
+            </p>
+          </div>
+
+          <!-- Filtros rápidos visuales -->
+          <div id="catalog-filters" class="flex flex-wrap gap-2">
+            <button data-filter="all" class="filter-btn active px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-cyanAccent text-void transition-all">Todos</button>
+            <button data-filter="control" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-elevated text-slate-300 border border-slate-700 hover:border-cyanAccent/50 transition-all">Mouse y Teclados</button>
+            <button data-filter="audio-video" class="filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-medium bg-elevated text-slate-300 border border-slate-700 hover:border-cyanAccent/50 transition-all">Audio y Video</button>
+          </div>
+        </div>
+
+        <!-- Cuadrícula Responsive de Productos -->
+        <div id="products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+
+          <!-- TARJETA 1: Mouse Gamer -->
+          <article data-category="control" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/30">
+                  Inalámbrico 26K DPI
+                </span>
+                <span class="text-xs font-mono text-slate-400">58g Ultraligero</span>
+              </div>
+
+              <!-- Ilustración SVG Mouse Gamer -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-32 h-32" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <ellipse cx="70" cy="72" rx="34" ry="52" fill="#121622" stroke="#00f0ff" stroke-width="2.5" />
+                  <path d="M36 62H104" stroke="#1e293b" stroke-width="2" />
+                  <line x1="70" y1="20" x2="70" y2="62" stroke="#00f0ff" stroke-width="2" />
+                  <rect x="65" y="34" width="10" height="20" rx="5" fill="#00f0ff" />
+                  <path d="M48 92C55 104 85 104 92 92" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Mouse Gamer ViperX Pro Wireless
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Sensor óptico PixArt 26.000 DPI, switches ópticos de 90M de clics, batería de 80 horas y conectividad triaxial sin latencia.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$249.900 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Mouse Gamer ViperX Pro Wireless', '$249.900 COP', 'Mouse gamer', 'Sensor óptico 26.000 DPI, peso ultraligero de 58g, polling rate de 4000Hz y cable paracord USB-C incluido.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+          <!-- TARJETA 2: Teclado Mecánico -->
+          <article data-category="control" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-violetAccent/20 text-violet-300 border border-violet-500/30">
+                  RGB Per-Key • 75%
+                </span>
+                <span class="text-xs font-mono text-slate-400">Hot-Swappable</span>
+              </div>
+
+              <!-- Ilustración SVG Teclado Mecánico -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-40 h-32" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="12" y="24" width="156" height="72" rx="10" fill="#121622" stroke="#00f0ff" stroke-width="2.2" />
+                  <g fill="#1a2033" stroke="#38bdf8" stroke-width="1">
+                    <rect x="22" y="34" width="14" height="12" rx="2" />
+                    <rect x="40" y="34" width="14" height="12" rx="2" />
+                    <rect x="58" y="34" width="14" height="12" rx="2" />
+                    <rect x="76" y="34" width="14" height="12" rx="2" />
+                    <rect x="94" y="34" width="14" height="12" rx="2" />
+                    <rect x="112" y="34" width="14" height="12" rx="2" />
+                    <rect x="130" y="34" width="28" height="12" rx="2" />
+
+                    <rect x="22" y="52" width="20" height="12" rx="2" />
+                    <rect x="46" y="52" width="14" height="12" rx="2" />
+                    <rect x="64" y="52" width="14" height="12" rx="2" />
+                    <rect x="82" y="52" width="14" height="12" rx="2" />
+                    <rect x="100" y="52" width="14" height="12" rx="2" />
+                    <rect x="118" y="52" width="40" height="12" rx="2" />
+
+                    <rect x="22" y="70" width="24" height="14" rx="2" />
+                    <rect x="50" y="70" width="76" height="14" rx="2" fill="#00f0ff" fill-opacity="0.22" stroke="#00f0ff" />
+                    <rect x="130" y="70" width="28" height="14" rx="2" />
+                  </g>
+                  <circle cx="152" cy="18" r="4" fill="#00f0ff" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Teclado Mecánico K-Core TKL Pro
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Chasis de aluminio CNC, switches lineales lubricados de fábrica, keycaps PBT Double-Shot y dial rotatorio de aluminio.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$489.000 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Teclado Mecánico K-Core TKL Pro', '$489.000 COP', 'Teclado mecánico', 'Formato compacto 75% en español (con tecla Ñ), montaje Gasket Mount silencioso y compatibilidad con switches de 3 y 5 pines.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+          <!-- TARJETA 3: Audífonos -->
+          <article data-category="audio-video" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/30">
+                  Audio Espacial 7.1
+                </span>
+                <span class="text-xs font-mono text-slate-400">Drivers 50mm</span>
+              </div>
+
+              <!-- Ilustración SVG Audífonos -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-32 h-32" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M32 76V64C32 41.9086 49.0132 24 70 24C90.9868 24 108 41.9086 108 64V76" stroke="#00f0ff" stroke-width="5" stroke-linecap="round" />
+                  <rect x="22" y="68" width="20" height="40" rx="9" fill="#121622" stroke="#00f0ff" stroke-width="2.2" />
+                  <rect x="98" y="68" width="20" height="40" rx="9" fill="#121622" stroke="#00f0ff" stroke-width="2.2" />
+                  <path d="M34 106C34 118 52 122 68 120" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" />
+                  <circle cx="71" cy="120" r="4" fill="#00f0ff" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Audífonos SonicPulse 7.1 Studio
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Drivers de neodimio de 50mm, almohadillas viscoelásticas transpirables y micrófono cardioide desmontable con cancelación de ruido.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$329.900 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Audífonos SonicPulse 7.1 Studio', '$329.900 COP', 'Audífonos', 'Sonido posicional de alta fidelidad, diadema reforzada en acero y compatibilidad multiplataforma PC, PS5 y Switch.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+          <!-- TARJETA 4: Monitor -->
+          <article data-category="audio-video" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-emerald-500/15 text-emerald-300 border border-emerald-500/30">
+                  180Hz • 1ms Fast IPS
+                </span>
+                <span class="text-xs font-mono text-slate-400">27" QHD 2K</span>
+              </div>
+
+              <!-- Ilustración SVG Monitor -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-40 h-32" viewBox="0 0 180 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="18" y="14" width="144" height="84" rx="8" fill="#121622" stroke="#00f0ff" stroke-width="2.4" />
+                  <rect x="25" y="21" width="130" height="68" rx="4" fill="#0a0c12" />
+                  <path d="M40 72L72 44L98 62L136 32" stroke="#00f0ff" stroke-width="2.5" stroke-linecap="round" />
+                  <path d="M80 98H100L106 114H74L80 98Z" fill="#1e293b" stroke="#475569" stroke-width="1.5" />
+                  <rect x="58" y="114" width="64" height="5" rx="2.5" fill="#00f0ff" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Monitor Horizon 27" QHD 180Hz
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Panel Fast IPS 2560x1440, cobertura 99% sRGB, soporte HDR400, FreeSync Premium y base ergonómica ajustable en altura y pivote.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$1.299.000 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Monitor Horizon 27&quot; QHD 180Hz', '$1.299.000 COP', 'Monitor', 'Resolución 2K QHD a 180Hz reales mediante DisplayPort 1.4, tiempo de respuesta 1ms GtG y tecnología Flicker-Free.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+          <!-- TARJETA 5: Mousepad -->
+          <article data-category="control" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/30">
+                  Control Hybrid • XXL
+                </span>
+                <span class="text-xs font-mono text-slate-400">900 x 400 mm</span>
+              </div>
+
+              <!-- Ilustración SVG Mousepad -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-40 h-32" viewBox="0 0 180 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="16" y="28" width="148" height="64" rx="12" fill="#121622" stroke="#00f0ff" stroke-width="2.2" />
+                  <rect x="23" y="35" width="134" height="50" rx="8" stroke="#7c3aed" stroke-dasharray="4 4" stroke-width="1.5" />
+                  <path d="M40 76L68 46L92 68L118 42L142 64" stroke="#00f0ff" stroke-opacity="0.55" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Mousepad PixelMat Pro XXL
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Tejido microtexturizado híbrido resistente a salpicaduras, bordes cosidos de perfil bajo y base de caucho natural antideslizante de 4mm.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$89.900 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Mousepad PixelMat Pro XXL', '$89.900 COP', 'Mousepad', 'Superficie extendida de 90x40 cm para teclado y mouse, deslizamiento equilibrado entre velocidad y frenado de precisión.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+          <!-- TARJETA 6: Micrófono / Kit Streaming (Equilibra el grid 3x2) -->
+          <article data-category="audio-video" class="product-card group relative flex flex-col justify-between rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/70 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-neon">
+            <div>
+              <div class="flex items-center justify-between mb-4">
+                <span class="px-3 py-1 rounded-full text-xs font-semibold bg-violetAccent/20 text-violet-300 border border-violet-500/30">
+                  USB-C • 24-bit/96kHz
+                </span>
+                <span class="text-xs font-mono text-slate-400">Cardioide Pro</span>
+              </div>
+
+              <!-- Ilustración SVG Micrófono Condensador -->
+              <div class="h-44 rounded-xl bg-void/80 border border-slate-800/80 flex items-center justify-center p-4 mb-5 group-hover:border-cyanAccent/30 transition-colors">
+                <svg class="w-32 h-32" viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect x="52" y="22" width="36" height="62" rx="18" fill="#121622" stroke="#00f0ff" stroke-width="2.4" />
+                  <line x1="56" y1="42" x2="84" y2="42" stroke="#38bdf8" stroke-width="1.5" />
+                  <line x1="56" y1="52" x2="84" y2="52" stroke="#38bdf8" stroke-width="1.5" />
+                  <line x1="56" y1="62" x2="84" y2="62" stroke="#38bdf8" stroke-width="1.5" />
+                  <path d="M42 64C42 82 54 94 70 94C86 94 98 82 98 64" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round" />
+                  <line x1="70" y1="94" x2="70" y2="114" stroke="#00f0ff" stroke-width="2.5" />
+                  <rect x="48" y="114" width="44" height="6" rx="3" fill="#00f0ff" />
+                </svg>
+              </div>
+
+              <h3 class="font-display text-xl font-bold text-white group-hover:text-cyanAccent transition-colors">
+                Micrófono WaveCast USB Studio
+              </h3>
+              <p class="text-sm text-slate-400 mt-2 leading-relaxed">
+                Cápsula condensadora cardioide con filtro antipop interno, botón táctil de silencio instantáneo y monitoreo directo sin latencia.
+              </p>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/90 flex items-center justify-between gap-3">
+              <div>
+                <span class="block text-[11px] uppercase tracking-wider text-slate-400">Precio sugerido</span>
+                <span class="font-display text-xl font-bold text-white">$369.000 <span class="text-xs font-normal text-cyanAccent">COP</span></span>
+              </div>
+              <button type="button"
+                onclick="openProductModal('Micrófono WaveCast USB Studio', '$369.000 COP', 'Otro', 'Grabación cristalina a 24-bit/96kHz, dial de ganancia integrado y base antivibración metálica Plug & Play.')"
+                class="px-4 py-2.5 rounded-xl bg-elevated hover:bg-cyanAccent text-cyanAccent hover:text-void font-semibold text-sm border border-cyanAccent/40 transition-all duration-200">
+                Consultar
+              </button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN «SOBRE PIXELZONE»                                             -->
+    <!-- ===================================================================== -->
+    <section id="nosotros" class="py-20 relative">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Columna Izquierda: Historia y Misión -->
+          <div class="lg:col-span-5">
+            <span class="text-cyanAccent font-mono text-xs sm:text-sm uppercase tracking-widest">Nuestra Identidad</span>
+            <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2 mb-5">
+              Sobre <span class="text-cyanAccent">PixelZone</span>
+            </h2>
+            <p class="text-slate-300 leading-relaxed mb-4">
+              Nacimos con un propósito claro: acercar el hardware de nivel competitivo y ergonomía avanzada a entusiastas, programadores y jugadores en toda Colombia, sin sobrecostos innecesarios ni intermediarios.
+            </p>
+            <p class="text-slate-400 leading-relaxed mb-6">
+              Cada periférico de nuestro catálogo pasa por pruebas reales de latencia, durabilidad de materiales y calibración antes de llegar a tu escritorio. Además, contamos con laboratorio técnico propio para respaldo postventa.
+            </p>
+            <div class="p-4 rounded-2xl bg-surface border border-slate-800 flex items-center gap-4">
+              <div class="w-12 h-12 rounded-xl bg-cyanAccent/10 border border-cyanAccent/30 flex items-center justify-center shrink-0 text-cyanAccent">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </div>
+              <div>
+                <h3 class="font-display font-semibold text-white text-sm sm:text-base">Compromiso de Autenticidad</h3>
+                <p class="text-xs sm:text-sm text-slate-400">Productos 100% originales con serial verificable y factura electrónica.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Columna Derecha: 4 Pilares en Tarjetas -->
+          <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-5">
+            
+            <div class="p-6 rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/40 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-bold text-white mb-2">Envíos Rápidos Nacionales</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Despachos asegurados el mismo día hacia Bogotá, Medellín, Cali, Barranquilla, Eje Cafetero y más de 900 municipios.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/40 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-violetAccent/20 text-violet-300 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-bold text-white mb-2">Laboratorio Técnico Propio</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Diagnóstico especializado, cambio de switches, actualización de firmware y calibración de sensores sin demoras eternas.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/40 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-bold text-white mb-2">Garantía Real de 12 Meses</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Cobertura directa ante defectos de fábrica con reemplazo ágil para que nunca detengas tu trabajo o tus torneos.
+              </p>
+            </div>
+
+            <div class="p-6 rounded-2xl bg-surface border border-slate-800 hover:border-cyanAccent/40 transition-colors">
+              <div class="w-11 h-11 rounded-xl bg-cyanAccent/10 text-cyanAccent flex items-center justify-center mb-4">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                </svg>
+              </div>
+              <h3 class="font-display text-lg font-bold text-white mb-2">Asesoría Personalizada</h3>
+              <p class="text-sm text-slate-400 leading-relaxed">
+                Te ayudamos a elegir el agarre de mouse, tipo de switch o tasa de refresco ideal según tu estilo de juego y presupuesto.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================================== -->
+    <!-- SECCIÓN «SOLICITAR SOPORTE TÉCNICO» CON VALIDACIÓN EN TIEMPO REAL     -->
+    <!-- ===================================================================== -->
+    <section id="soporte" class="py-20 bg-surface/60 border-t border-slate-800/80">
+      <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center mb-10">
+          <span class="text-cyanAccent font-mono text-xs sm:text-sm uppercase tracking-widest">Centro de Asistencia</span>
+          <h2 class="font-display text-3xl sm:text-4xl font-bold text-white mt-2">Solicitar soporte técnico</h2>
+          <p class="text-slate-400 mt-3 max-w-xl mx-auto text-sm sm:text-base">
+            ¿Presentas fallas de conexión, doble clic, calibración o garantía? Completa el formulario y un especialista de PixelZone se comunicará contigo.
+          </p>
+        </div>
+
+        <div class="rounded-2xl bg-surface border border-slate-800 p-6 sm:p-10 shadow-2xl">
+          <form id="support-form" novalidate class="space-y-6">
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <!-- Campo 1: Nombre completo -->
+              <div>
+                <label for="fullName" class="block text-sm font-medium text-slate-200 mb-2">
+                  Nombre completo <span class="text-cyanAccent" aria-hidden="true">*</span>
+                </label>
+                <input type="text" id="fullName" name="fullName" required
+                  placeholder="Ej. Camilo Andrés Rodríguez"
+                  class="w-full px-4 py-3 rounded-xl bg-void border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyanAccent focus:ring-1 focus:ring-cyanAccent transition-colors" />
+                <p id="error-fullName" class="hidden mt-1.5 text-xs text-rose-400">Por favor ingresa tu nombre completo (mínimo 3 caracteres).</p>
+              </div>
+
+              <!-- Campo 2: Teléfono -->
+              <div>
+                <label for="phone" class="block text-sm font-medium text-slate-200 mb-2">
+                  Teléfono <span class="text-cyanAccent" aria-hidden="true">*</span>
+                </label>
+                <input type="tel" id="phone" name="phone" required
+                  placeholder="+57 300 000 0000"
+                  class="w-full px-4 py-3 rounded-xl bg-void border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyanAccent focus:ring-1 focus:ring-cyanAccent transition-colors" />
+                <p id="error-phone" class="hidden mt-1.5 text-xs text-rose-400">Ingresa un número de teléfono válido (mínimo 7 dígitos).</p>
+              </div>
+            </div>
+
+            <!-- Campo 3: Tipo de periférico -->
+            <div>
+              <label for="peripheralType" class="block text-sm font-medium text-slate-200 mb-2">
+                Tipo de periférico <span class="text-cyanAccent" aria-hidden="true">*</span>
+              </label>
+              <div class="relative">
+                <select id="peripheralType" name="peripheralType" required
+                  class="w-full appearance-none px-4 py-3 rounded-xl bg-void border border-slate-700 text-white focus:outline-none focus:border-cyanAccent focus:ring-1 focus:ring-cyanAccent transition-colors">
+                  <option value="" disabled selected>Selecciona el periférico...</option>
+                  <option value="Mouse gamer">Mouse gamer</option>
+                  <option value="Teclado mecánico">Teclado mecánico</option>
+                  <option value="Audífonos">Audífonos</option>
+                  <option value="Monitor">Monitor</option>
+                  <option value="Mousepad">Mousepad</option>
+                  <option value="Otro">Otro</option>
+                </select>
+                <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-slate-400">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                  </svg>
+                </div>
+              </div>
+              <p id="error-peripheralType" class="hidden mt-1.5 text-xs text-rose-400">Selecciona una categoría de periférico.</p>
+            </div>
+
+            <!-- Campo 4: Descripción del problema -->
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <label for="issueDescription" class="block text-sm font-medium text-slate-200">
+                  Descripción del problema <span class="text-cyanAccent" aria-hidden="true">*</span>
+                </label>
+                <span id="char-counter" class="text-xs font-mono text-slate-400">0 / 400</span>
+              </div>
+              <textarea id="issueDescription" name="issueDescription" rows="4" maxlength="400" required
+                placeholder="Describe brevemente el modelo del equipo y el inconveniente que estás experimentando..."
+                class="w-full px-4 py-3 rounded-xl bg-void border border-slate-700 text-white placeholder-slate-500 focus:outline-none focus:border-cyanAccent focus:ring-1 focus:ring-cyanAccent transition-colors resize-y"></textarea>
+              <p id="error-issueDescription" class="hidden mt-1.5 text-xs text-rose-400">Describe el problema con al menos 12 caracteres para poder ayudarte.</p>
+            </div>
+
+            <!-- Botón de Envío -->
+            <div class="pt-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <p class="text-xs text-slate-400">
+                <span class="text-cyanAccent">*</span> Campos obligatorios. Tiempo estimado de respuesta: menos de 2 horas hábiles.
+              </p>
+              <button type="submit"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-xl bg-cyanAccent hover:bg-cyan-300 text-void font-semibold text-base shadow-neon hover:shadow-neonStrong transition-all duration-300">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                </svg>
+                <span>Enviar solicitud</span>
+              </button>
+            </div>
+            <p id="support-status" class="hidden mt-4 text-sm" role="status" aria-live="polite"></p>
+          </form>
+
+          <!-- Mensaje Visual de Confirmación con Ticket Dinámico -->
+          <div id="ticket-confirmation" class="hidden mt-8 p-6 rounded-2xl bg-emerald-950/40 border border-emerald-500/40 transition-all">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pb-4 border-b border-emerald-500/20">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center shrink-0">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-display font-bold text-lg text-white">¡Solicitud recibida con éxito!</h3>
+                  <p class="text-xs sm:text-sm text-emerald-200/80">Hemos registrado tu caso en nuestro sistema de soporte técnico.</p>
+                </div>
+              </div>
+              <div class="px-3.5 py-2 rounded-xl bg-void border border-emerald-500/40 text-left sm:text-right">
+                <span class="block text-[10px] uppercase tracking-wider text-slate-400">Número de Ticket</span>
+                <span id="generated-ticket-id" class="font-mono font-bold text-cyanAccent text-sm sm:text-base">#PZ-00000</span>
+              </div>
+            </div>
+
+            <div class="mt-4 text-sm text-slate-300 space-y-1">
+              <p><strong class="text-white">Solicitante:</strong> <span id="confirm-name"></span></p>
+              <p><strong class="text-white">Teléfono de contacto:</strong> <span id="confirm-phone"></span></p>
+              <p><strong class="text-white">Periférico reportado:</strong> <span id="confirm-peripheral" class="text-cyanAccent"></span></p>
+            </div>
+
+            <div class="mt-5 flex flex-wrap gap-3">
+              <button type="button" id="copy-ticket-btn"
+                class="px-4 py-2 rounded-xl bg-elevated hover:bg-slate-700 text-xs font-medium text-white border border-slate-700 transition-colors">
+                Copiar número de ticket
+              </button>
+              <button type="button" id="new-ticket-btn"
+                class="px-4 py-2 rounded-xl text-xs font-medium text-cyanAccent hover:underline">
+                Registrar otra solicitud
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================================================================== -->
+  <!-- PIE DE PÁGINA (FOOTER)                                                -->
+  <!-- ===================================================================== -->
+  <footer class="bg-void border-t border-slate-800/90 pt-14 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-slate-800/80">
+        
+        <!-- Marca -->
+        <div>
+          <a href="#inicio" class="flex items-center gap-2.5 mb-4">
+            <div class="w-8 h-8 rounded-lg bg-cyanAccent/15 border border-cyanAccent/40 flex items-center justify-center text-cyanAccent">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polygon points="12 2 21 7 21 17 12 22 3 17 3 7 12 2" />
+              </svg>
+            </div>
+            <span class="font-display font-bold text-xl text-white">Pixel<span class="text-cyanAccent">Zone</span></span>
+          </a>
+          <p class="text-sm text-slate-400 leading-relaxed">
+            Tienda especializada en periféricos gaming, estaciones de productividad y laboratorio técnico en Colombia.
+          </p>
+        </div>
+
+        <!-- Enlaces Rápidos -->
+        <div>
+          <h4 class="font-display font-semibold text-white mb-4">Navegación</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li><a href="#inicio" class="hover:text-cyanAccent transition-colors">Inicio</a></li>
+            <li><a href="#catalogo" class="hover:text-cyanAccent transition-colors">Catálogo de productos</a></li>
+            <li><a href="#nosotros" class="hover:text-cyanAccent transition-colors">Sobre PixelZone</a></li>
+            <li><a href="#soporte" class="hover:text-cyanAccent transition-colors">Solicitar soporte técnico</a></li>
+          </ul>
+        </div>
+
+        <!-- Contacto Ficticio en Colombia -->
+        <div>
+          <h4 class="font-display font-semibold text-white mb-4">Contacto Colombia</h4>
+          <ul class="space-y-2.5 text-sm text-slate-400">
+            <li>Cra. 15 # 93-60, Local 204, Bogotá D.C.</li>
+            <li>Centro Logístico Eje Cafetero, Dosquebradas</li>
+            <li>Línea Nacional: +57 (601) 555 0194</li>
+            <li>soporte@pixelzone.com.co</li>
+          </ul>
+        </div>
+
+        <!-- Horarios -->
+        <div>
+          <h4 class="font-display font-semibold text-white mb-4">Horarios de Atención</h4>
+          <ul class="space-y-2 text-sm text-slate-400">
+            <li class="flex justify-between"><span>Lunes a Viernes:</span> <span class="text-slate-200">8:30 a.m. - 6:30 p.m.</span></li>
+            <li class="flex justify-between"><span>Sábados:</span> <span class="text-slate-200">9:00 a.m. - 3:00 p.m.</span></li>
+            <li class="flex justify-between"><span>Domingos y Festivos:</span> <span class="text-slate-500">Soporte Web 24/7</span></li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+        <p>© 2026 PixelZone Colombia S.A.S. Todos los derechos reservados. Proyecto web demostrativo.</p>
+        <div class="flex items-center gap-6">
+          <a href="#nosotros" class="hover:text-slate-300 transition-colors">Política de Garantías</a>
+          <a href="#soporte" class="hover:text-slate-300 transition-colors">Mesa de Ayuda</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- MODAL INTERACTIVO DE CONSULTA DE PRODUCTO                             -->
+  <!-- ===================================================================== -->
+  <div id="product-modal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-void/80 backdrop-blur-sm" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="relative w-full max-w-lg rounded-2xl bg-surface border border-cyanAccent/40 p-6 sm:p-8 shadow-2xl transform transition-all">
+      <button type="button" id="close-modal-btn" aria-label="Cerrar ventana"
+        class="absolute top-4 right-4 p-2 rounded-xl bg-elevated text-slate-400 hover:text-white transition-colors">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+
+      <span class="inline-block px-3 py-1 rounded-full text-xs font-mono bg-cyanAccent/10 text-cyanAccent border border-cyanAccent/30 mb-3">
+        Ficha de Consulta Rápida
+      </span>
+
+      <h3 id="modal-title" class="font-display text-2xl font-bold text-white mb-2">Nombre del Producto</h3>
+      <p id="modal-price" class="font-display text-xl font-bold text-cyanAccent mb-4">$0 COP</p>
+
+      <div class="p-4 rounded-xl bg-void/80 border border-slate-800 mb-6">
+        <p class="text-xs uppercase tracking-wider text-slate-400 mb-1">Especificaciones destacadas</p>
+        <p id="modal-specs" class="text-sm text-slate-200 leading-relaxed"></p>
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-3">
+        <button type="button" id="modal-consult-support-btn"
+          class="flex-1 inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-cyanAccent hover:bg-cyan-300 text-void font-semibold text-sm transition-colors">
+          <span>Consultar disponibilidad / soporte</span>
+        </button>
+        <button type="button" id="modal-cancel-btn"
+          class="px-5 py-3 rounded-xl bg-elevated hover:bg-slate-700 text-slate-200 font-medium text-sm border border-slate-700 transition-colors">
+          Seguir viendo
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT: MENÚ MÓVIL, FILTROS, MODAL Y VALIDACIÓN DE SOPORTE        -->
+  <!-- ===================================================================== -->
+  <script>
+    // 1. Menú Hamburguesa Responsive
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('icon-open');
+    const iconClose = document.getElementById('icon-close');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    function toggleMobileMenu() {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      mobileMenu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden', !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
+      mobileMenuBtn.setAttribute('aria-expanded', String(isHidden));
+    }
+
+    mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+    mobileLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        if (!mobileMenu.classList.contains('hidden')) toggleMobileMenu();
+      });
+    });
+
+    // 2. Filtro de Categorías en el Catálogo
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const productCards = document.querySelectorAll('.product-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-cyanAccent', 'text-void');
+          b.classList.add('bg-elevated', 'text-slate-300', 'border', 'border-slate-700');
+        });
+        btn.classList.add('bg-cyanAccent', 'text-void');
+        btn.classList.remove('bg-elevated', 'text-slate-300', 'border', 'border-slate-700');
+
+        const selectedFilter = btn.getAttribute('data-filter');
+        productCards.forEach(card => {
+          if (selectedFilter === 'all' || card.getAttribute('data-category') === selectedFilter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // 3. Modal Interactivo de Consulta de Producto
+    const productModal = document.getElementById('product-modal');
+    const modalTitle = document.getElementById('modal-title');
+    const modalPrice = document.getElementById('modal-price');
+    const modalSpecs = document.getElementById('modal-specs');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const modalCancelBtn = document.getElementById('modal-cancel-btn');
+    const modalConsultSupportBtn = document.getElementById('modal-consult-support-btn');
+
+    let selectedProductCategory = 'Otro';
+    let selectedProductName = '';
+
+    function openProductModal(name, price, category, specs) {
+      selectedProductName = name;
+      selectedProductCategory = category;
+      modalTitle.textContent = name;
+      modalPrice.textContent = price;
+      modalSpecs.textContent = specs;
+      productModal.classList.remove('hidden');
+      productModal.classList.add('flex');
+    }
+
+    function closeProductModal() {
+      productModal.classList.add('hidden');
+      productModal.classList.remove('flex');
+    }
+
+    closeModalBtn.addEventListener('click', closeProductModal);
+    modalCancelBtn.addEventListener('click', closeProductModal);
+    productModal.addEventListener('click', (e) => {
+      if (e.target === productModal) closeProductModal();
+    });
+
+    // Autocompletar sección de soporte/consulta al pulsar desde el modal
+    modalConsultSupportBtn.addEventListener('click', () => {
+      closeProductModal();
+      const peripheralSelect = document.getElementById('peripheralType');
+      const issueTextarea = document.getElementById('issueDescription');
+
+      peripheralSelect.value = selectedProductCategory;
+      issueTextarea.value = `Hola PixelZone, me gustaría consultar disponibilidad y detalles técnicos sobre el producto: ${selectedProductName}.`;
+      updateCharCounter();
+      validateField('peripheralType');
+      validateField('issueDescription');
+
+      document.getElementById('soporte').scrollIntoView({ behavior: 'smooth' });
+      document.getElementById('fullName').focus();
+    });
+
+    // 4. Formulario de Soporte Técnico con Validación en Tiempo Real
+    const supportForm = document.getElementById('support-form');
+    const fullNameInput = document.getElementById('fullName');
+    const phoneInput = document.getElementById('phone');
+    const peripheralSelect = document.getElementById('peripheralType');
+    const issueTextarea = document.getElementById('issueDescription');
+    const charCounter = document.getElementById('char-counter');
+
+    const confirmationBox = document.getElementById('ticket-confirmation');
+    const generatedTicketEl = document.getElementById('generated-ticket-id');
+    const confirmNameEl = document.getElementById('confirm-name');
+    const confirmPhoneEl = document.getElementById('confirm-phone');
+    const confirmPeripheralEl = document.getElementById('confirm-peripheral');
+    const copyTicketBtn = document.getElementById('copy-ticket-btn');
+    const newTicketBtn = document.getElementById('new-ticket-btn');
+
+    function updateCharCounter() {
+      charCounter.textContent = `${issueTextarea.value.length} / 400`;
+    }
+
+    issueTextarea.addEventListener('input', updateCharCounter);
+
+    function setFieldState(inputEl, errorEl, isValid) {
+      if (isValid) {
+        inputEl.classList.remove('border-rose-500');
+        inputEl.classList.add('border-emerald-500/60');
+        errorEl.classList.add('hidden');
+      } else {
+        inputEl.classList.remove('border-emerald-500/60');
+        inputEl.classList.add('border-rose-500');
+        errorEl.classList.remove('hidden');
+      }
+      return isValid;
+    }
+
+    function validateField(fieldId) {
+      if (fieldId === 'fullName') {
+        const isValid = fullNameInput.value.trim().length >= 3;
+        return setFieldState(fullNameInput, document.getElementById('error-fullName'), isValid);
+      }
+      if (fieldId === 'phone') {
+        const digitsOnly = phoneInput.value.replace(/\D/g, '');
+        const isValid = digitsOnly.length >= 7 && digitsOnly.length <= 15;
+        return setFieldState(phoneInput, document.getElementById('error-phone'), isValid);
+      }
+      if (fieldId === 'peripheralType') {
+        const isValid = peripheralSelect.value.trim() !== '';
+        return setFieldState(peripheralSelect, document.getElementById('error-peripheralType'), isValid);
+      }
+      if (fieldId === 'issueDescription') {
+        const isValid = issueTextarea.value.trim().length >= 12;
+        return setFieldState(issueTextarea, document.getElementById('error-issueDescription'), isValid);
+      }
+      return false;
+    }
+
+    // Escuchadores en tiempo real
+    fullNameInput.addEventListener('input', () => validateField('fullName'));
+    phoneInput.addEventListener('input', () => validateField('phone'));
+    peripheralSelect.addEventListener('change', () => validateField('peripheralType'));
+    issueTextarea.addEventListener('input', () => validateField('issueDescription'));
+
+    // URL de implementación de Google Apps Script.
+    // Reemplaza este texto por la URL /exec que obtendrás al implementar el script.
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwZbxNSKXBDJqoZsw3J9bsEK7HhdjpxLyPXr55eTDIeR3saRNM8uW_WNDVWWk-Qn2TA/exec';
+
+    const supportStatus = document.getElementById('support-status');
+
+    supportForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const validName = validateField('fullName');
+      const validPhone = validateField('phone');
+      const validPeripheral = validateField('peripheralType');
+      const validIssue = validateField('issueDescription');
+
+      if (!validName || !validPhone || !validPeripheral || !validIssue) {
+        return;
+      }
+
+      if (!GOOGLE_SCRIPT_URL.startsWith('https://script.google.com/macros/s/')) {
+        supportStatus.textContent = 'Falta configurar la conexión con Google Sheets. Contacta al administrador de PixelZone.';
+        supportStatus.className = 'mt-4 text-sm text-rose-400';
+        return;
+      }
+
+      const submitButton = supportForm.querySelector('button[type="submit"]');
+      const submitLabel = submitButton.querySelector('span');
+      const originalLabel = submitLabel ? submitLabel.textContent : 'Enviar solicitud';
+
+      const payload = {
+        nombreCompleto: fullNameInput.value.trim(),
+        telefono: phoneInput.value.trim(),
+        tipoPeriferico: peripheralSelect.value,
+        descripcionProblema: issueTextarea.value.trim()
+      };
+
+      submitButton.disabled = true;
+      submitButton.classList.add('opacity-60', 'cursor-not-allowed');
+      if (submitLabel) submitLabel.textContent = 'Enviando...';
+      supportStatus.textContent = 'Enviando tu solicitud...';
+      supportStatus.className = 'mt-4 text-sm text-cyanAccent';
+
+      try {
+        // Apps Script normalmente requiere una petición simple sin preflight CORS.
+        // no-cors permite enviar los datos, pero el navegador no permite leer la respuesta.
+        await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+          body: JSON.stringify(payload)
+        });
+
+        // Se genera el ticket después de que el navegador completa el envío de la petición.
+        const randomNum = Math.floor(10000 + Math.random() * 90000);
+        const ticketCode = `#PZ-${randomNum}`;
+
+        generatedTicketEl.textContent = ticketCode;
+        confirmNameEl.textContent = payload.nombreCompleto;
+        confirmPhoneEl.textContent = payload.telefono;
+        confirmPeripheralEl.textContent = payload.tipoPeriferico;
+
+        supportStatus.textContent = 'La solicitud fue enviada. Por seguridad del navegador, esta página no puede verificar la respuesta de Google Sheets.';
+        supportStatus.className = 'mt-4 text-sm text-emerald-300';
+
+        confirmationBox.classList.remove('hidden');
+        confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      } catch (error) {
+        console.error('Error al enviar la solicitud:', error);
+        supportStatus.textContent = 'No fue posible enviar la solicitud. Verifica tu conexión e inténtalo nuevamente.';
+        supportStatus.className = 'mt-4 text-sm text-rose-400';
+      } finally {
+        submitButton.disabled = false;
+        submitButton.classList.remove('opacity-60', 'cursor-not-allowed');
+        if (submitLabel) submitLabel.textContent = originalLabel;
+      }
+    });
+
+    // Copiar ticket al portapapeles de forma segura
+    copyTicketBtn.addEventListener('click', () => {
+      const tempInput = document.createElement('input');
+      tempInput.value = generatedTicketEl.textContent;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const originalText = copyTicketBtn.textContent;
+      copyTicketBtn.textContent = '¡Ticket copiado!';
+      setTimeout(() => {
+        copyTicketBtn.textContent = originalText;
+      }, 2000);
+    });
+
+    // Reiniciar formulario para una nueva solicitud
+    newTicketBtn.addEventListener('click', () => {
+      supportForm.reset();
+      updateCharCounter();
+      [fullNameInput, phoneInput, peripheralSelect, issueTextarea].forEach(el => {
+        el.classList.remove('border-emerald-500/60', 'border-rose-500');
+      });
+      confirmationBox.classList.add('hidden');
+      supportStatus.className = 'hidden mt-4 text-sm';
+      supportStatus.textContent = '';
+      fullNameInput.focus();
+    });
+  </script>
+</body>
+</html>
